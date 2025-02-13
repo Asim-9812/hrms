@@ -11,6 +11,9 @@ import '../../../../core/resources/font_manager.dart';
 import '../../../../core/resources/gap_manager.dart';
 import '../../../../core/utils/shimmers.dart';
 
+
+// new cinjsdanfsan
+
 class AllDepartments extends ConsumerWidget {
   const AllDepartments({super.key});
 
