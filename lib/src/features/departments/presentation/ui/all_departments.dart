@@ -12,7 +12,7 @@ import '../../../../core/resources/gap_manager.dart';
 import '../../../../core/utils/shimmers.dart';
 
 
-// new cinjsdanfsan
+// another new origin
 
 class AllDepartments extends ConsumerWidget {
   const AllDepartments({super.key});
