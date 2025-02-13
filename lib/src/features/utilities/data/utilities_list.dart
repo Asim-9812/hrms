@@ -9,11 +9,11 @@ final utilitiesList = [
 
   //index should match index in the list of dashboardItems (D:\hrm\lib\src\features\dashboard\data\sample_data\sample_menu_list.dart)
 
-  {'name': 'Field Visit', 'image': 'assets/images/field_visit.png', 'index' : null},
-  {'name': 'Leave', 'image': 'assets/images/leave.png', 'index' : null},
-  {'name': 'Duty Roaster', 'image': 'assets/images/duty.png', 'index' : null},
-  {'name': 'Attendances', 'image': 'assets/images/attendance.png', 'index' : 5},
-  {'name': 'Holidays', 'image': 'assets/images/holiday.png', 'index' : 10},
-  {'name': 'Events', 'image': 'assets/images/event.png', 'index' : null},
+  {'name': 'Field Visit', 'image': 'assets/images/field_visit.png', 'route' : null},
+  {'name': 'Leave', 'image': 'assets/images/leave.png', 'route' : null},
+  {'name': 'Duty Roaster', 'image': 'assets/images/duty.png', 'route' : null},
+  {'name': 'Attendances', 'image': 'assets/images/attendance.png', 'route' : Attendance()},
+  {'name': 'Holidays', 'image': 'assets/images/holiday.png', 'route' : Holidays()},
+  {'name': 'Events', 'image': 'assets/images/event.png', 'route' : null},
 
 ];

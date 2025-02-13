@@ -14,7 +14,7 @@ class Holidays extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: CommonNavBar(name: 'Upcoming Holidays'),
+      appBar: CommonNavBar(name: 'Upcoming Holidays'),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -10,6 +10,11 @@ class NoHolidays extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('No public holidays for this month.',style: br1,));
+    return Center(child: Column(
+      children: [
+        h10,
+        Text('No public holidays for this month.',style: br1,),
+      ],
+    ));
   }
 }

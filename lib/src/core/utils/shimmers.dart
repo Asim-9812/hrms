@@ -8,6 +8,7 @@ import '../resources/color_manager.dart';
 
 Shimmer commonShimmer({
   double? height,
+  double? width,
   double? radius,
   EdgeInsets? margin,
 }){
@@ -17,6 +18,7 @@ Shimmer commonShimmer({
     highlightColor: MyColors.white,
     child: Container(
       height: height,
+      width: width,
       margin: margin,
       decoration: BoxDecoration(
         border: Border.all(

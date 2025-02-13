@@ -19,22 +19,20 @@ import 'widgets/appbar_widgets/dashboard_appbar.dart';
 class Dashboard extends ConsumerWidget {
   Dashboard({super.key});
 
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context, ref) {
 
-    final index = ref.watch(dashboardController).dashboardIndex;
-    final controller = ref.watch(dashboardController).pageController;
-    final pageName = ref.watch(dashboardController).activeIndexPage;
+    // final index = ref.watch(dashboardController).dashboardIndex;
+    // final controller = ref.watch(dashboardController).pageController;
+    // final pageName = ref.watch(dashboardController).activeIndexPage;
 
     return Scaffold(
-      appBar: DashboardAppbar(context, index == 0 ? 'HR Management System' : pageName),
+      key: scaffoldKey,
+      appBar: DashboardAppbar(context, 'HR Management System'),
       drawer: DashboardDrawer(),
-      body: PageView(
-        physics: NeverScrollableScrollPhysics(),
-        controller: controller,
-        children: dashboardPageList,
-      ),
+      body: Homepage(),
 
     );
   }

@@ -20,7 +20,7 @@ class Attendance extends ConsumerWidget {
     return GestureDetector(
       onTap: ()=>FocusScope.of(context).unfocus(),
       child: Scaffold(
-        // appBar: CommonNavBar(name: 'Attendance List'),
+        appBar: CommonNavBar(name: 'Attendance List'),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

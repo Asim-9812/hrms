@@ -80,6 +80,9 @@ dependencies:
   # https://pub.dev/packages/simple_html_css
   simple_html_css: ^5.0.0
 
+  # https://pub.dev/packages/device_preview_plus
+  device_preview_plus: any
+
 
 
 

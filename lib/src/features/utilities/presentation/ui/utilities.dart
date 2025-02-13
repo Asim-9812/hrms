@@ -27,9 +27,7 @@ class Utilities extends ConsumerWidget {
           itemBuilder: (context, index){
             final utility = utilities[index];
             return InkWell(
-              onTap:utility['index'] == null ? null : (){
-                ref.read(dashboardController.notifier).changeIndex(utility['index'] as int, utility['name'] as String);
-              },
+              onTap:utility['route'] == null ? null : ()=>routeTo(context, utility['route'] as Widget),
               child: Container(
                 decoration: BoxDecoration(
                   color: MyColors.primaryLighter,

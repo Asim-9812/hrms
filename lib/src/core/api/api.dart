@@ -18,5 +18,6 @@ class Api{
 
 
   static const getAllDepartments = '$baseUrl/Department/GetAllDepartment';
+  static const getEmployeesByDepartment = '$baseUrl/Employee/DepartmentEmployee';
 
 }

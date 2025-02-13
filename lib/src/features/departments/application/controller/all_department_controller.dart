@@ -12,10 +12,23 @@ class AllDepartmentController extends ChangeNotifier{
 
   TextEditingController searchController = TextEditingController();
 
+  int selectedDepartmentId = 0;
+  String selectedDepartmentName = '';
+
   List<DepartmentModel> filteredList = [];
 
   void filterList(String query,List<DepartmentModel> allList){
-    filteredList = allList.where((e)=>e.name.toLowerCase() == query.toLowerCase()).toList();
+
+    if(query.trim().isEmpty){
+      filteredList = allList;
+    }
+    filteredList = allList.where((e)=>e.name.toLowerCase().contains(query.toLowerCase())).toList();
+    notifyListeners();
+  }
+
+  void selectedDepartment(int id, String name){
+    selectedDepartmentId = id;
+    selectedDepartmentName = name;
     notifyListeners();
   }
 

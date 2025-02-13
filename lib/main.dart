@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hrm/src/features/biometrics_auth/domain/model/biometric_model.dart';
 import 'package:hrm/src/features/login/domain/model/user_model.dart';
-
+import 'package:device_preview_plus/device_preview_plus.dart';
 import 'src/app/my_app.dart';
 
 void main() async {
@@ -23,5 +23,13 @@ void main() async {
   await Hive.openBox<Biometrics>('tempCred');
 
 
-  runApp(ProviderScope(child: const MyApp()));
+  runApp(
+      DevicePreview(
+        enabled: true,
+        builder: (context) {
+          return ProviderScope(
+            child: const MyApp()
+            );
+        }
+      ));
 }
