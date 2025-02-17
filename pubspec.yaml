@@ -83,6 +83,9 @@ dependencies:
   # https://pub.dev/packages/device_preview_plus
   device_preview_plus: any
 
+  # https://pub.dev/packages/table_calendar
+  table_calendar: any
+
 
 
 
