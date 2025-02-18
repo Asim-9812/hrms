@@ -23,10 +23,10 @@ class NoHomeNotices extends StatelessWidget {
               aspectRatio: 2.5,
               child: Container(
                 decoration: BoxDecoration(
-                    color: MyColors.primary,
+                    color: MyColors.primaryLight,
                   borderRadius: BorderRadius.circular(16)
                 ),
-                child: Center(child: Text(error,style: wr1,)),
+                child: Center(child: Text(error,style: br1,)),
               )
           ),
         ],

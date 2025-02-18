@@ -1,166 +1,188 @@
 
 
 
+
+
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hrm/src/core/resources/color_manager.dart';
+import 'package:hrm/src/core/utils/router.dart';
 import 'package:hrm/src/core/widgets/common_widgets.dart';
-import 'package:hrm/src/features/attendance/presentation/ui/widgets/date_filter.dart';
-import 'package:hrm/src/features/attendance/presentation/ui/widgets/request_attendance.dart';
+import 'package:hrm/src/features/attendance/data/sample_data/monthly_data.dart';
+import 'package:hrm/src/features/attendance/presentation/ui/attendance_search.dart';
+import 'package:intl/intl.dart';
+
 import '../../../../core/resources/font_manager.dart';
 import '../../../../core/resources/gap_manager.dart';
 
-class Attendance extends ConsumerWidget {
+class Attendance extends StatelessWidget {
   const Attendance({super.key});
 
   @override
-  Widget build(BuildContext context, ref) {
-
-
-    return GestureDetector(
-      onTap: ()=>FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        appBar: CommonNavBar(name: 'Attendance List'),
-        body: SingleChildScrollView(
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: CommonNavBar(name: 'Attendance'),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              RequestAttendance(),
-              DateFilter(),
+              Card(
+                margin: EdgeInsets.zero,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: InkWell(
+                    onTap: ()=>routeTo(context, AttendanceSearch()),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Total Days', style: br2,maxLines: 1,),
+                              Text('14', style: bh2,),
+                            ],
+                          ),
+                          VertDivider(),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Attended', style: br2,maxLines: 1,),
+                              Text('14', style: bh2,),
+                            ],
+                          ),
+                          VertDivider(),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Leave', style: br2,maxLines: 1,),
+                              Text('0', style: bh2,),
+                            ],
+                          ),
+                          VertDivider(),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Total %', style: br2,maxLines: 1,),
+                              Text('100%', style: bh2,),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              h10,
+              Card(
+                margin: EdgeInsets.zero,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Total Leave', style: br2,maxLines: 1,),
+                            Text('20', style: bh2,),
+                          ],
+                        ),
+                        VertDivider(),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Taken', style: br2,maxLines: 1,),
+                            Text('12', style: bh2,),
+                          ],
+                        ),
+                        VertDivider(),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Remaining', style: br2,maxLines: 1,),
+                            Text('8', style: bh2,),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
               h20,
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'Search',
-                    labelStyle: br2,
-                    hintText: 'Search for anything...',
-                    hintStyle: br3,
-                    prefixIcon: Icon(Icons.search,color: MyColors.primary,),
-                    border: UnderlineInputBorder()
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: ListTile(
-                  tileColor: MyColors.primary,
-                  title: Row(
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: Text('Employee name',style: wr1,maxLines: 1,),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Center(child: Text('In',style: wr1,)),
-                      ),
-                      w20,
-                      Expanded(
-                        flex: 1,
-                        child: Center(child: Text('Out',style: wr1,)),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: ListTile(
-                  tileColor: MyColors.lightGrey,
-                  leading: CircleAvatar(
-                    child: Icon(Icons.person),
-                  ),
-                  title: Row(
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('John Doe',style: br1,maxLines: 1,),
-                            Text('Web Developer',style: br2,maxLines: 1,)
-                          ],
+              ...List.generate(sampleAttendanceList.length, (index){
+                final attendanceData = sampleAttendanceList[index];
+                final date = DateFormat('yyyy-MM-dd').parse(attendanceData['startDate']);
+                final month = DateFormat('MMMM yyyy').format(date);
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(month,style: bh2,),
+                    h10,
+                    Card(
+                      margin: EdgeInsets.only(bottom: 20),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: InkWell(
+                          onTap: ()=>routeTo(context, AttendanceSearch()),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Total Days', style: br2,maxLines: 1,),
+                                    Text('${attendanceData['totalDays']}', style: bh2,),
+                                  ],
+                                ),
+                                VertDivider(),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Attended', style: br2,maxLines: 1,),
+                                    Text('${attendanceData['attendedDays']}', style: bh2,),
+                                  ],
+                                ),
+                                VertDivider(),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Leave', style: br2,maxLines: 1,),
+                                    Text('${attendanceData['leave']}', style: bh2,),
+                                  ],
+                                ),
+                                VertDivider(),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Total %', style: br2,maxLines: 1,),
+                                    Text('${attendanceData['aggrv']}%', style: bh2,),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
-                      Expanded(
-                        flex: 1,
-                        child:  Center(child: Text('06:44 AM',style: br2,maxLines: 1,))
-                      ),
-                      w20,
-                      Expanded(
-                        flex: 1,
-                        child: Center(child: Text('06:00 PM',style: br2,maxLines: 1,))
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: ListTile(
-                  tileColor: MyColors.lightGrey,
-                  leading: CircleAvatar(
-                    child: Icon(Icons.person),
-                  ),
-                  title: Row(
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('John Doe',style: br1,maxLines: 1,),
-                            Text('Web Developer',style: br2,maxLines: 1,)
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child:  Center(child: Text('06:44 AM',style: br2,maxLines: 1,))
-                      ),
-                      w20,
-                      Expanded(
-                        flex: 1,
-                        child: Center(child: Text('06:00 PM',style: br2,maxLines: 1,))
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: ListTile(
-                  tileColor: MyColors.lightGrey,
-                  leading: CircleAvatar(
-                    child: Icon(Icons.person),
-                  ),
-                  title: Row(
-                    children: [
-                      Expanded(
-                        flex: 2,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('John Doe',style: br1,maxLines: 1,),
-                            Text('Web Developer',style: br2,maxLines: 1,)
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child:  Center(child: Text('06:44 AM',style: br2,maxLines: 1,))
-                      ),
-                      w20,
-                      Expanded(
-                        flex: 1,
-                        child: Center(child: Text('06:00 PM',style: br2,maxLines: 1,))
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+                    ),
+                  ],
+                );
+              })
             ],
           ),
         ),

@@ -2,10 +2,11 @@
 
 
 
+import 'package:hrm/src/features/attendance/presentation/ui/attendance.dart';
 
-import '../../attendance/presentation/ui/attendance.dart';
+import '../../attendance/presentation/ui/attendance_search.dart';
 import '../../calendar/presentation/ui/calendar.dart';
-import '../../holidays/presentation/ui/holidays.dart';
+import '../../departments/presentation/ui/all_departments.dart';
 
 final utilitiesList = [
 
@@ -16,5 +17,6 @@ final utilitiesList = [
   {'name': 'Duty Roaster', 'image': 'assets/images/duty.png', 'route' : null},
   {'name': 'Attendances', 'image': 'assets/images/attendance.png', 'route' : Attendance()},
   {'name': 'Calendar', 'image': 'assets/images/holiday.png', 'route' : HrCalendar()},
+  {'name': 'Department', 'image': 'assets/images/department.png', 'route' : AllDepartments()},
 
 ];

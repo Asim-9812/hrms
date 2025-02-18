@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../../core/resources/color_manager.dart';
+import '../../../../../core/resources/font_manager.dart';
 import '../../../../../core/resources/gap_manager.dart';
 import '../../../../../core/utils/date_input_formatter.dart';
 import '../../../application/controller/attendance_date_controller.dart';
@@ -18,70 +19,122 @@ class DateFilter extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
 
-    final controller = ref.watch(attendanceListController).dateController;
+    final fromController = ref.watch(attendanceListController).fromDateController;
+    final toController = ref.watch(attendanceListController).toDateController;
     final key = ref.watch(attendanceListController).formKey;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Expanded(
-            child: Form(
-              key: key,
-              child: TextFormField(
-                controller: controller,
-                decoration: InputDecoration(
-                    isDense: true,
-                    labelText: 'Date',
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(4)
+          Form(
+            key: key,
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    controller: fromController,
+                    decoration: InputDecoration(
+                        isDense: true,
+                        labelText: 'From Date',
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(4)
+                        ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(4)
+                        ),
+                        suffixIcon: IconButton(
+                            onPressed: () => fromDateDialog(context, ref),
+                            icon: Icon(Icons.calendar_month,color: MyColors.primary,)
+                        )
                     ),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(4)
-                    ),
-                    suffixIcon: IconButton(
-                        onPressed: () => dateDialog(context, ref),
-                        icon: Icon(Icons.calendar_month,color: MyColors.primary,)
-                    )
-                ),
-                validator: (val){
-                  final now = DateTime.now();
+                    validator: (val){
+                      final now = DateTime.now();
 
-                  if(val == null || val.trim().isEmpty){
-                    return 'Date is required';
-                  }
-                  try{
-                    final currentDate = DateFormat('yyyy-MM-dd').parse(val);
-                    if(currentDate.isAfter(now)){
-                      return 'Date is after current date';
-                    }
-                    else{
-                      return null;
-                    }
-                  }catch(e){
-                    return 'Invalid Format';
-                  }
-                },
-                inputFormatters: [
-                  LengthLimitingTextInputFormatter(10),
-                  DateInputFormatter()
-                ],
-              ),
+                      if(val == null || val.trim().isEmpty){
+                        return 'Date is required';
+                      }
+                      try{
+                        final currentDate = DateFormat('yyyy-MM-dd').parse(val);
+                        if(currentDate.isAfter(now)){
+                          return 'Invalid Date';
+                        }
+                        else{
+                          return null;
+                        }
+                      }catch(e){
+                        return 'Invalid Format';
+                      }
+                    },
+                    inputFormatters: [
+                      LengthLimitingTextInputFormatter(10),
+                      DateInputFormatter()
+                    ],
+                  ),
+                ),
+                w10,
+                Expanded(
+                  child: TextFormField(
+                    controller: toController,
+                    decoration: InputDecoration(
+                        isDense: true,
+                        labelText: 'To Date',
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(4)
+                        ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(4)
+                        ),
+                        suffixIcon: IconButton(
+                            onPressed: () => toDateDialog(context, ref),
+                            icon: Icon(Icons.calendar_month,color: MyColors.primary,)
+                        )
+                    ),
+                    validator: (val){
+                      final now = DateTime.now();
+
+                      if(val == null || val.trim().isEmpty){
+                        return 'Date is required';
+                      }
+                      try{
+                        final currentDate = DateFormat('yyyy-MM-dd').parse(val);
+                        if(currentDate.isAfter(now)){
+                          return 'Invalid Date';
+                        }
+                        else{
+                          return null;
+                        }
+                      }catch(e){
+                        return 'Invalid Format';
+                      }
+                    },
+                    inputFormatters: [
+                      LengthLimitingTextInputFormatter(10),
+                      DateInputFormatter()
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
-          w06,
-          IconButton(
-              style: IconButton.styleFrom(
+          h08,
+          TextButton(
+              style: TextButton.styleFrom(
                 backgroundColor: MyColors.primary,
-                foregroundColor: MyColors.white,
                 shape: ContinuousRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                )
+                  borderRadius: BorderRadius.circular(12)
+                ),
               ),
-              onPressed: (){
-                key.currentState?.validate();
-              }, icon: Icon(Icons.search))
+              onPressed: (){}, 
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.search,color: MyColors.white,),
+                  w10,
+                  Text('Search',style: wr1,)
+                ],
+          ))
         ],
       ),
 

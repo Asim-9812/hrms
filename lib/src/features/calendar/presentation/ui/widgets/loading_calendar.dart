@@ -17,6 +17,10 @@ class LoadingCalendar extends StatelessWidget {
     final focusedDay = DateTime.now();
     final firstDay = DateTime(2025,1,1);
     final lastDay = DateTime(2025,12,31);
+    final todayStyle = TextStyle(color: MyColors.white,fontWeight: FontWeight.w500,fontSize: 16);
+    final weekStyle = TextStyle(color: MyColors.primary,fontWeight: FontWeight.w500,fontSize: 12);
+    final weekendStyle = TextStyle(color: MyColors.red,fontWeight: FontWeight.w500,fontSize: 12);
+
 
     return Column(
       children: [
@@ -25,6 +29,7 @@ class LoadingCalendar extends StatelessWidget {
           firstDay: firstDay,
           lastDay: lastDay,
           headerStyle: HeaderStyle(
+              headerPadding: EdgeInsets.zero,
               formatButtonVisible: false,
               titleCentered: true,
               titleTextStyle: bh2,
@@ -46,20 +51,22 @@ class LoadingCalendar extends StatelessWidget {
               )
           ),
           daysOfWeekStyle: DaysOfWeekStyle(
-              weekendStyle: wh3,
-              weekdayStyle: wh3,
-              decoration: BoxDecoration(
-                  color: MyColors.primary
-              )
+            weekendStyle: weekendStyle,
+            weekdayStyle: weekStyle,
           ),
-          daysOfWeekHeight: 50,
+          rowHeight: 40,
           calendarStyle: CalendarStyle(
-              defaultTextStyle: br1,
-              weekendTextStyle: TextStyle(color: MyColors.red,fontWeight: FontWeight.w500,fontSize: 16),
-              todayDecoration: BoxDecoration(
-                  color: MyColors.primary
-              ),
-              todayTextStyle: TextStyle(color: MyColors.white,fontWeight: FontWeight.w500,fontSize: 16)
+            outsideDaysVisible: false,
+            defaultTextStyle: br1,
+            weekendTextStyle: weekendStyle,
+            isTodayHighlighted: true,
+            todayDecoration: BoxDecoration(color: MyColors.primary),
+            todayTextStyle: todayStyle,
+            markersMaxCount: 3, // Ensures multiple markers are properly displayed
+            markerDecoration: BoxDecoration(
+              shape: BoxShape.circle,
+            ),
+            markersAlignment: Alignment.bottomCenter, // Adjust marker positioning
           ),
         ),
         h20,

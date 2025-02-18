@@ -30,6 +30,7 @@ class CalendarList extends ConsumerWidget {
     return Expanded(
       child: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
             FocusedEvent(calendarData: calendarData),

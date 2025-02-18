@@ -50,3 +50,10 @@ AppBar CommonNavBar({required String name}){
 Text BulletinPoint({double? fs, Color? color}){
   return Text("\u2022 ",style: TextStyle(color: color ?? MyColors.secondary, fontSize: fs ?? 32),);
 }
+
+
+Widget VertDivider({double? height}){
+  return SizedBox(
+      height: height ?? 30,
+      child: VerticalDivider());
+}

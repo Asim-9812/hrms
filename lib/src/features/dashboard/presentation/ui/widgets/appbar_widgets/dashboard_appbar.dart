@@ -7,8 +7,6 @@ import 'package:hrm/src/features/notice/presentation/ui/notices.dart';
 import '../../../../../../core/resources/color_manager.dart';
 import '../../../../../../core/resources/font_manager.dart';
 import '../../../../../../core/utils/router.dart';
-import '../../../../../notice/presentation/homepage_ui/home_notices.dart';
-import 'pop_up_menu_widget.dart';
 
 AppBar DashboardAppbar(BuildContext context, String name){
   return AppBar(
@@ -25,7 +23,6 @@ AppBar DashboardAppbar(BuildContext context, String name){
           onPressed: ()=>routeTo(context, Notices()),
           icon: Icon(Icons.notifications_rounded,color: MyColors.white,)
       ),
-      PopUpMenuWidget()
     ],
   );
 }
