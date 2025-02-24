@@ -134,7 +134,8 @@ class DateFilter extends ConsumerWidget {
                   w10,
                   Text('Search',style: wr1,)
                 ],
-          ))
+            )
+          )
         ],
       ),
 
