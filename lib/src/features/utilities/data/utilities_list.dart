@@ -1,14 +1,16 @@
 
 
 
+
 import '../../attendance/presentation/ui/attendance.dart';
 import '../../calendar/presentation/ui/calendar.dart';
 import '../../departments/presentation/ui/all_departments.dart';
+import '../../leave/presentation/ui/leave_list.dart';
 
 final utilitiesList = [
 
   {'name': 'Field Visit', 'image': 'assets/images/field_visit.png', 'route' : null},
-  {'name': 'Leave', 'image': 'assets/images/leave.png', 'route' : null},
+  {'name': 'Leave', 'image': 'assets/images/leave.png', 'route' : LeaveList()},
   {'name': 'Duty Roaster', 'image': 'assets/images/duty.png', 'route' : null},
   {'name': 'Attendances', 'image': 'assets/images/attendance.png', 'route' : Attendance()},
   {'name': 'Calendar', 'image': 'assets/images/holiday.png', 'route' : HrCalendar()},

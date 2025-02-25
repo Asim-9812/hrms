@@ -16,6 +16,9 @@ class Api{
   static const getAttendance = '$baseUrl/AttendanceManage/GetAllAttendance';
 
 
+  static const getLeaveByEmployeeId = '$baseUrl/Leave/GetLeaveByEmployeeId';
+
+
   static const getAllHolidays = '$baseUrl/PublicHoliday/GetAllPublicHolidayList';
 
 

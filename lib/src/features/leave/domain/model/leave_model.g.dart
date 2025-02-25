@@ -1,0 +1,76 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'leave_model.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+LeaveModel _$LeaveModelFromJson(Map<String, dynamic> json) => LeaveModel(
+      leaveId: (json['LeaveId'] as num).toInt(),
+      employeeId: (json['EmployeeId'] as num).toInt(),
+      employeeName: json['EmployeeName'] as String,
+      idEnroll: (json['IdEnroll'] as num).toInt(),
+      empcode: json['empcode'] as String,
+      remarks: json['remarks'] as String?,
+      subject: json['Subject'] as String,
+      fromDate: DateTime.parse(json['FromDate'] as String),
+      toDate: DateTime.parse(json['ToDate'] as String),
+      totalDay: (json['totalDay'] as num).toInt(),
+      reason: json['Reason'] as String,
+      name: json['Name'] as String?,
+      letterto: json['letterto'] as String?,
+      salutation: json['salutation'] as String?,
+      header: json['header'] as String?,
+      includeheader: json['includeheader'] as bool,
+      id: (json['Id'] as num).toInt(),
+      leaveTitle: json['LeaveTitle'] as String?,
+      leaveType: json['LeaveType'] as String,
+      status: json['Status'] as String,
+      createdOn: DateTime.parse(json['CreatedOn'] as String),
+      updatedOn: DateTime.parse(json['UpdatedOn'] as String),
+      createdBy: json['CreatedBy'] as String?,
+      updatedBy: json['UpdatedBy'] as String?,
+      flag: json['Flag'] as String?,
+      leavenarration: json['leavenarration'] as String?,
+      fromNepaliDate: json['fromNepaliDate'] as String?,
+      fromDateChangeSetting: json['fromDateChangeSetting'] as String?,
+      toNepaliDate: json['toNepaliDate'] as String?,
+      toDateChangeSetting: json['toDateChangeSetting'] as String?,
+      totalPresentLeave: json['totalPresentLeave'] as String?,
+    );
+
+Map<String, dynamic> _$LeaveModelToJson(LeaveModel instance) =>
+    <String, dynamic>{
+      'LeaveId': instance.leaveId,
+      'EmployeeId': instance.employeeId,
+      'EmployeeName': instance.employeeName,
+      'IdEnroll': instance.idEnroll,
+      'empcode': instance.empcode,
+      'remarks': instance.remarks,
+      'Subject': instance.subject,
+      'FromDate': instance.fromDate.toIso8601String(),
+      'ToDate': instance.toDate.toIso8601String(),
+      'totalDay': instance.totalDay,
+      'Reason': instance.reason,
+      'Name': instance.name,
+      'letterto': instance.letterto,
+      'salutation': instance.salutation,
+      'header': instance.header,
+      'includeheader': instance.includeheader,
+      'Id': instance.id,
+      'LeaveTitle': instance.leaveTitle,
+      'LeaveType': instance.leaveType,
+      'Status': instance.status,
+      'CreatedOn': instance.createdOn.toIso8601String(),
+      'UpdatedOn': instance.updatedOn.toIso8601String(),
+      'CreatedBy': instance.createdBy,
+      'UpdatedBy': instance.updatedBy,
+      'Flag': instance.flag,
+      'leavenarration': instance.leavenarration,
+      'fromNepaliDate': instance.fromNepaliDate,
+      'fromDateChangeSetting': instance.fromDateChangeSetting,
+      'toNepaliDate': instance.toNepaliDate,
+      'toDateChangeSetting': instance.toDateChangeSetting,
+      'totalPresentLeave': instance.totalPresentLeave,
+    };

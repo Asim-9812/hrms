@@ -73,7 +73,7 @@ class CurrentAttendanceUi extends ConsumerWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('Total %', style: br2,maxLines: 1,),
-                          Text('$aggregate%', style: bh2,),
+                          Text('${aggregate.toStringAsFixed(1)}%', style: bh2,),
                         ],
                       ),
                     ],
